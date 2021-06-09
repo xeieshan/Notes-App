@@ -1,0 +1,26 @@
+{
+  "name": "notes-app",
+  "version": "1.0.0",
+  "description": "Simple notes taking app using nodejs",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xeieshan/Notes-App.git"
+  },
+  "keywords": [
+    "notes-app",
+    "nodejs"
+  ],
+  "author": "Zeeshan Haider",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xeieshan/Notes-App/issues"
+  },
+  "homepage": "https://github.com/xeieshan/Notes-App#readme",
+  "dependencies": {
+    "validator": "^13.6.0"
+  }
+}
