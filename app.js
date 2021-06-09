@@ -7,12 +7,19 @@
 // // fs.appendFileSync("notes.txt", "\nNah!!");
 // console.log(sum);
 
+const validator = require('validator');
+const chalk = require('chalk');
 const getNotes = require("./notes.js");
 const msg = getNotes();
 const utils = require("./utils.js");
-utils.log(msg);
+utils.log(chalk.green.bgWhite.bold.inverse(msg));
 
-const validator = require('validator');
+utils.log(chalk.blue.inverse('isEmail: '),validator.isEmail('ss@ss.com'));
+utils.log(chalk.red('isUrl: '),validator.isURL('http:test.com'));
 
-console.log('isEmail: ',validator.isEmail('ss@ss.com'));
-console.log('isUrl: ',validator.isURL('http:test.com'));
+const command = process.argv[2]
+if (command === 'add') {
+    utils.log(chalk.green.bgWhite.bold('Added Successfully!'));
+} else if (command === 'remove') {
+    utils.log(chalk.red.bgWhite.bold('Removed Successfully!'));
+}

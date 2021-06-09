@@ -1,4 +1,4 @@
 const getNotes = function() {
-    return 'My Notes';
+    return '!!!!!!SUCCESS!!!!!!';
 }
 module.exports = getNotes;

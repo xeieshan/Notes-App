@@ -4,7 +4,7 @@
   "description": "Simple notes taking app using nodejs",
   "main": "app.js",
   "scripts": {
-    "test": "node app.js"
+    "test": "nodemon ./app.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/xeieshan/Notes-App#readme",
   "dependencies": {
+    "chalk": "^4.1.1",
     "validator": "^13.6.0"
   }
 }
