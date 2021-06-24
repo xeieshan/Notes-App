@@ -6,27 +6,40 @@ const getNotes = function () {
   return "!!!!!!SUCCESS!!!!!!";
 };
 
-const addNotes = function (title, body) {
-  utils.log("AddNote Method");
+const addNotes = function (title, description) {
   const notes = loadNotes();
 
   const found = notes.filter((note) => {
-    note.title === title;
+    return note.title === title;
   });
-  const length = found.length ;
-  debugger;
+
   if (found.length === 0) {
     notes.push({
       title: title,
-      body: body,
+      description: description,
     });
     saveNote(notes);
-    utils.log(chalk.red("Adding to Notes\n"));
+    utils.log(chalk.green("Adding to Notes"));
     utils.log("Title: " + title);
-    utils.log("Body: " + body);
-    utils.log(chalk.black(notes));
+    utils.log("Description: " + description);
   } else {
-    utils.log(chalk.red("Same title already exist in notes!\n"));
+    utils.log(chalk.red("Same '" + title + "' already exist in notes!\n"));
+  }
+};
+
+const removeNotes = function (title) {
+  var notes = loadNotes();
+
+  const index = notes.findIndex((note) => {
+    return note.title === title;
+  });
+
+  if (index === -1) {
+    utils.log(chalk.red("Title '" + title + "' doesn't exist in notes!\n"));
+  } else {
+    notes.splice(index, 1);
+    saveNote(notes);
+    utils.log(chalk.green("Removing Note with title: '" + title + "'" ));
   }
 };
 
@@ -44,4 +57,8 @@ const loadNotes = function () {
     return [];
   }
 };
-module.exports = { getNote: getNotes, addNote: addNotes };
+module.exports = {
+  getNote: getNotes,
+  addNote: addNotes,
+  removeNote: removeNotes,
+};

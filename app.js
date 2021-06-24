@@ -12,10 +12,10 @@ const chalk = require("chalk");
 const notes = require("./notes.js");
 const msg = notes.getNote();
 const utils = require("./utils.js");
-utils.log(chalk.green.bgWhite.bold.inverse(msg));
+// utils.log(chalk.green.bgWhite.bold.inverse(msg));
 
-utils.log(chalk.blue.inverse('isEmail: ' + validator.isEmail('ss@ss.com')));
-utils.log(chalk.red('isUrl: ' + validator.isURL('http:test.com')));
+// utils.log(chalk.blue.inverse('isEmail: ' + validator.isEmail('ss@ss.com')));
+// utils.log(chalk.red('isUrl: ' + validator.isURL('http:test.com')));
 
 // const command = process.argv[2]
 // utils.log(process.argv);
@@ -30,24 +30,30 @@ yargs.command({
       demandOption: true,
       type: 'string',
     },
-    body: {
-      describe: 'Note Body',
+    description: {
+      describe: 'Note Description',
       demandOption: true,
       type: 'string',
     },
   },
-  handler: function (s) {
-    utils.log("add handler");
-    notes.addNote(s.title, s.body);
+  handler: function (argv) {
+    notes.addNote(argv.title, argv.description);
   },
 });
 
 // Remove Command
 yargs.command({
   command: "remove",
-  describe: "This will remove",
-  handler: function () {
-    utils.log("Removing Note");
+  describe: 'This will remove',
+  builder: {
+    title: {
+      describe: 'Note Title',
+      demandOption: true,
+      type: 'string',
+    },
+  },
+  handler: function (argv) {
+    notes.removeNote(argv.title, argv.description);
   },
 });
 
@@ -68,6 +74,8 @@ yargs.command({
     utils.log("Read a Note");
   },
 });
+
+yargs.parse()
 
 // utils.log(yargs.argv);
 
