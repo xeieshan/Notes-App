@@ -4,7 +4,13 @@
   "description": "Simple notes taking app using nodejs",
   "main": "app.js",
   "scripts": {
-    "test": "nodemon ./app.js"
+    "test": "nodemon ./app.js",
+    "remove" : "node app.js remove --title=\"ss\"",
+    "add" : "node app.js add --title=\"ss\" --description=\"sasd\"",
+    "inspectadd": "node inspect app.js add --title=\"sAD111ASD1\" --description=\"sasd\"",
+    "list": "node app.js list",
+    "inspectread": "node inspect app.js read --title=\"11\"",
+    "read": "node app.js read --title=\"11\""
   },
   "repository": {
     "type": "git",
