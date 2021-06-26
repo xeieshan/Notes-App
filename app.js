@@ -78,8 +78,9 @@ yargs.command({
   },
   handler(argv) {
     utils.log("Read a Note");
+    
     notes.readNote(argv.title, argv.description);
-  },
+  }, 
 });
 
 yargs.parse()
